@@ -1,49 +1,51 @@
+import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:flutter/material.dart';
 
 // Large Black Text
 TextStyle blackTextlr = TextStyle(
   color: Appcolors().black,
-  fontSize: 16,
+  fontSize: AppDm().fontsizelr, //lr
   fontWeight: FontWeight.w500,
 );
 // Medium Black Text
 TextStyle blackTextmd = TextStyle(
   color: Appcolors().black,
-  fontSize: 15,
+  fontSize: AppDm().fontsizelr, // lr pahla 15
   fontWeight: FontWeight.w500,
 );
 // Small Black Text
-TextStyle blackTextsm = TextStyle(
+TextStyle blackTextsm = TextStyle( //sm
   color: Appcolors().black,
-  fontSize: 12,
+  fontSize: AppDm().fontsizesm,
   fontWeight: FontWeight.w500,
 );
 // Large White Text
 TextStyle whiteTextlr = TextStyle(
   color: Appcolors().white,
-  fontSize: 16,
+  fontSize: AppDm().fontsizelr, //lr
   fontWeight: FontWeight.w600,
 );
 // Medium White Text
-TextStyle whiteTextmd = TextStyle(
+TextStyle whiteTextmd = TextStyle( // sm pahla 13
   color: Appcolors().white,
-  fontSize: 13,
+  fontSize: AppDm().fontsizesm,
   fontWeight: FontWeight.w600,
 );
 // Small White Text
-TextStyle whiteTextsm = TextStyle(
+TextStyle whiteTextsm = TextStyle( //sm pahla 13
   color: Appcolors().white,
-  fontSize: 13,
+  fontSize: AppDm().fontsizesm,
   fontWeight: FontWeight.w400,
 );
-TextStyle greyTextmd = TextStyle(
+TextStyle greyTextmd = TextStyle( // md
   color: Appcolors().grey,
-  fontSize: 14,
+  fontSize: AppDm().fontsizemd,
   fontWeight: FontWeight.w400,
 );
-TextStyle greyTextsm = TextStyle(
+
+TextStyle greyTextsm = TextStyle( //sm
   color: Appcolors().grey,
-  fontSize: 12,
+  fontSize: AppDm().fontsizesm,
   fontWeight: FontWeight.w300,
 );

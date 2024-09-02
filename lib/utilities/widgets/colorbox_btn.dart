@@ -1,4 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+//================================ Dimmentstion ==============================
+
+import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:flutter/material.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 
@@ -17,12 +19,12 @@ class ColorboxBtn extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(right: 10),
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
+        margin: EdgeInsets.only(right: AppDm().marginlr),
+        padding:  EdgeInsets.symmetric(horizontal: AppDm().paddingxx, vertical: AppDm().paddinglr),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: boxColor,
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(AppDm().radiusx),
         ),
         child: Text(title, style: blackTextmd,),
       ),

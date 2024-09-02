@@ -1,13 +1,14 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+//================================ Dimensitons ==============================
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:connectapp/utilities/text/textstyle.dart';
 
-class Customtile extends StatelessWidget {
+class CustomTileblack extends StatelessWidget {
   final icon ;
   final title;
-   Customtile({
+   CustomTileblack({
     Key? key,
      this.icon,
      this.title,
@@ -21,7 +22,7 @@ class Customtile extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           title,
-          style: whiteTextmd,
+          style: blackTextmd,
         ),
       ],
     );

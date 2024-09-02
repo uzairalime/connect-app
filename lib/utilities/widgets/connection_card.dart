@@ -1,8 +1,9 @@
+//================================ Dimenstions ==============================
+import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 class ConnectionCard extends StatelessWidget {
   final profileImg;
@@ -13,10 +14,10 @@ class ConnectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Get.width * 0.35,
-      height: Get.height * 0.22,
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      width: AppDm().connectioncardw,
+      height: AppDm().connectioncardh,
+      padding:  EdgeInsets.symmetric(horizontal: AppDm().paddingx, vertical: AppDm().paddingx),
+      margin:  EdgeInsets.symmetric(horizontal: AppDm().marginsm, vertical: AppDm().marginsm),
       decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: const [
@@ -27,7 +28,7 @@ class ConnectionCard extends StatelessWidget {
               spreadRadius: 0,
             )
           ],
-          borderRadius: BorderRadius.circular(12)),
+          borderRadius: BorderRadius.circular(AppDm().radiuslr)),
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,

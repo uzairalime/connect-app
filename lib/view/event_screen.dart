@@ -1,9 +1,11 @@
 import 'dart:developer';
-
+import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:connectapp/utilities/widgets/colorbox_btn.dart';
+import 'package:connectapp/utilities/widgets/event_card.dart';
 import 'package:connectapp/utilities/widgets/eventbanner_card.dart';
+import 'package:connectapp/utilities/widgets/heading_tile.dart';
 import 'package:connectapp/utilities/widgets/searchfieldcustom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,7 +27,10 @@ class EventScreen extends StatelessWidget {
               'assets/icons/menu_icon.svg',
               width: 20,
             )),
-        title: Text("Events",style: blackTextlr,),
+        title: Text(
+          "Events",
+          style: blackTextlr,
+        ),
         centerTitle: true,
         actions: [
           // Notification btn
@@ -54,40 +59,46 @@ class EventScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            // Search bar
-            SearchfieldCustom(
-              hintText: "Search events..",
-              searchController: searchController,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            // All Events text and btn List
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // All Events btn
-                SizedBox(
-                  width: Get.width*0.95,
-                  height: 50,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                    return ColorboxBtn(title: "Mental Health", onTap: () => log("Mental Health Btn"), boxColor: Appcolors().secondary,);
-                  },),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            // Suggested Events text
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(AppDm().paddinglr),
+          child: Column(
+            children: [
+              // Search bar
+              SearchfieldCustom(
+                hintText: "Search events..",
+                searchController: searchController,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              // All Events text and btn List
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // All Events btn
+                  SizedBox(
+                    width: AppDm().colorboxbtnw,
+                    height: AppDm().colorboxbtnh,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 5,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return ColorboxBtn(
+                          title: "Mental Health",
+                          onTap: () => log("Mental Health Btn"),
+                          boxColor: Appcolors().secondary,
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              // Suggested Events text
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -107,8 +118,8 @@ class EventScreen extends StatelessWidget {
               ),
               // Suggested Event Banner
               SizedBox(
-                width: Get.width,
-                height: 210,
+                width: AppDm().eventbannercardw,
+                height: AppDm().eventbannercardh,
                 child: ListView.builder(
                   itemCount: 5,
                   shrinkWrap: true,
@@ -126,28 +137,61 @@ class EventScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
+                height: Get.width * 0.04,
+              ),
+              // Trednding Event text
+              HeadingTile(
+                  title: "Tranding Events",
+                  onTap: () => log("Tranding Events")),
+              SizedBox(
                 height: Get.width * 0.02,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Tranding Events",
-                    style: blackTextlr,
-                  ),
-                  //
-                  Text(
-                    "See all",
-                    style: greyTextmd,
-                  )
-                ],
+              // tranding Event card
+              SizedBox(
+                // width: Get.width * 0.45,
+                height: AppDm().eventcardh,
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return EventCard(
+                        onTap: () => log("Join btn"),
+                        img: 'assets/images/eventbanner.png',
+                        title: "Muse : Will of the People",
+                        location: "City, Country",
+                        date: "City, Country");
+                  },
+                ),
               ),
               SizedBox(
                 height: Get.width * 0.02,
               ),
-            
-        
-          ],
+              SizedBox(
+                height: Get.width * 0.02,
+              ),
+              // Recent Event text
+              HeadingTile(
+                  title: "Recent Events", onTap: () => log("Tranding Events")),
+              // Recent Event card
+              SizedBox(
+                // width: Get.width * 0.45,
+                height: AppDm().eventcardh,
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return EventCard(
+                      onTap: () => log("Join btn"),
+                      img: 'assets/images/eventbanner.png',
+                      title: "Muse : Will of the People",
+                      location: "City, Country",
+                      date: "City, Country",
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     ));

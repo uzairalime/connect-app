@@ -1,8 +1,10 @@
 import 'dart:developer';
+import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:connectapp/utilities/widgets/eventbanner_card.dart';
 import 'package:connectapp/utilities/widgets/group_card.dart';
+import 'package:connectapp/utilities/widgets/heading_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding:  EdgeInsets.all(AppDm().paddinglr),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -59,7 +61,7 @@ class HomeScreen extends StatelessWidget {
               // Up comming Event Banner
               SizedBox(
                 width: Get.width,
-                height: 210,
+                height: AppDm().eventbannercardh,
                 child: ListView.builder(
                   itemCount: 5,
                   shrinkWrap: true,
@@ -80,27 +82,14 @@ class HomeScreen extends StatelessWidget {
                 height: Get.height*0.02,
               ),
               // Suggested Events text
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Suggested Events",
-                    style: blackTextlr,
-                  ),
-                  //
-                  Text(
-                    "See all",
-                    style: greyTextmd,
-                  )
-                ],
-              ),
+              HeadingTile(title: "Suggested Events", onTap: ()=> log("Suggested Events")),
               SizedBox(
                 height: Get.width * 0.02,
               ),
               // Suggested Event Banner
               SizedBox(
                 width: Get.width,
-                height: 210,
+                height: AppDm().eventbannercardh,
                 child: ListView.builder(
                   itemCount: 5,
                   shrinkWrap: true,
@@ -121,27 +110,14 @@ class HomeScreen extends StatelessWidget {
                 height: Get.width * 0.02,
               ),
               // Active Groups text
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Active Groups",
-                    style: blackTextlr,
-                  ),
-                  //
-                  Text(
-                    "See all",
-                    style: greyTextmd,
-                  )
-                ],
-              ),
+              HeadingTile(title: "Active Group", onTap: ()=> log("Active Group")),
               SizedBox(
                 height: Get.width * 0.02,
               ),
               // Active Group Card
               SizedBox(
                 width: Get.width,
-                height: 80,
+                height: AppDm().groupcardh,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
@@ -157,27 +133,14 @@ class HomeScreen extends StatelessWidget {
                 height: Get.width * 0.02,
               ),
               // Suggested Groups text
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Suggested Groups",
-                    style: blackTextlr,
-                  ),
-                  //
-                  Text(
-                    "See all",
-                    style: greyTextmd,
-                  )
-                ],
-              ),
+              HeadingTile(title: "Suggested Group", onTap: ()=> log("Suggested Group")),
               SizedBox(
                 height: Get.width * 0.02,
               ),
               // Suggested Group Card
               SizedBox(
                 width: Get.width,
-                height: 80,
+                height: AppDm().groupcardh,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
@@ -189,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                 );
                 },),
               ),
-             
+              
             ],
           ),
         ),

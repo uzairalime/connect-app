@@ -1,7 +1,8 @@
+//================================ dimenstions ==============================
+import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class GroupCard extends StatelessWidget {
   final groupName;
@@ -12,9 +13,9 @@ class GroupCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Get.width * 0.46,
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      width: AppDm().groupcardw,
+      padding:  EdgeInsets.symmetric(horizontal: AppDm().paddingx, vertical: AppDm().paddingx),
+      margin:  EdgeInsets.symmetric(horizontal: AppDm().marginsm, vertical: AppDm().marginsm),
       decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: const [
@@ -25,7 +26,7 @@ class GroupCard extends StatelessWidget {
               spreadRadius: 0,
             )
           ],
-          borderRadius: BorderRadius.circular(12)),
+          borderRadius: BorderRadius.circular(AppDm().radiuslr)), // pahla 12 thi ab 10
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

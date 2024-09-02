@@ -1,3 +1,5 @@
+//================================ Dimensitons ==============================
+import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:flutter/material.dart';
 
@@ -13,14 +15,13 @@ class CustomBtn extends StatelessWidget {
       onTap: onTap,
       child: Container(
         // width: Get.width*0.3,
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: AppDm().paddingx, vertical: AppDm().paddinglr),
+        margin: EdgeInsets.symmetric(horizontal: AppDm().marginx, vertical: AppDm().marginlr),
         // height: 40,
-        // alignment: Alignment.center,
         decoration: BoxDecoration(
             // gradient: Appcolors().bggradient,
             color: Color.fromRGBO(45, 38, 75, 0.5),
-            borderRadius: BorderRadius.circular(8)),
+            borderRadius: BorderRadius.circular(AppDm().radiusmd)),
         child: Text(
           "Individual Event",
           style: whiteTextmd,

@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:connectapp/utilities/widgets/connection_card.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class ConnectionsScreen extends StatelessWidget {
               'assets/icons/menu_icon.svg',
               width: 20,
             )),
+        // notification and profile
         actions: [
           // Notification btn
           GestureDetector(
@@ -49,10 +51,9 @@ class ConnectionsScreen extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(AppDm().paddinglr),
           child: Column(
             children: [
-
               const Text("data"),
               SizedBox(
                 height: Get.height * 0.02,
@@ -60,14 +61,12 @@ class ConnectionsScreen extends StatelessWidget {
               // connection Cards List
               Expanded(
                 child: GridView.builder(
-                  gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                      ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
                   itemCount: 10,
-          
                   itemBuilder: (context, index) {
                     return const ConnectionCard(
                       profileImg: 'assets/images/profile_img.png',

@@ -1,8 +1,9 @@
+//================================ dimensitons ==============================
 import 'dart:developer';
-
+import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:connectapp/utilities/widgets/custom_btn.dart';
-import 'package:connectapp/utilities/widgets/customtile.dart';
+import 'package:connectapp/utilities/widgets/customtilewhite.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,18 +26,17 @@ class EventbannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: Get.width*0.9,
-        height: 130,
+        width: AppDm().eventbannerw,
+        height: AppDm().eventbannerh,
         decoration: BoxDecoration(
           image:  DecorationImage(
             image: AssetImage(bgBanner),
             fit: BoxFit.cover,
           ),
           color: Colors.amber,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(AppDm().radiusxx),// pahla 20 tha ab dimenstions 25
         ),
-        margin: const EdgeInsets.only(right: 8),
-        // margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        margin: EdgeInsets.only(right: AppDm().marginmd),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -48,11 +48,11 @@ class EventbannerCard extends StatelessWidget {
             Container(
               width: Get.width,
               height: 110,
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding:  EdgeInsets.symmetric(horizontal: AppDm().paddinglr, vertical: AppDm().paddinglr),
+              margin:  EdgeInsets.symmetric(horizontal: AppDm().marginlr, vertical: AppDm().marginlr),
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(45, 38, 75, 0.5),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(AppDm().radiuslr),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
