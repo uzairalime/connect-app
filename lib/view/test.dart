@@ -27,12 +27,12 @@ class Test extends StatelessWidget {
                   dividerColor: Colors.transparent,
                   indicatorSize: TabBarIndicatorSize.tab,
                   labelStyle: whiteTextmd,
-                  unselectedLabelStyle: whiteTextmd.copyWith(color: Appcolors().primaryColor),
+                  unselectedLabelStyle:
+                      whiteTextmd.copyWith(color: Appcolors().primaryColor),
                   indicator: BoxDecoration(
                     gradient: Appcolors().primary,
                     borderRadius: BorderRadius.circular(AppDm().radiusxx),
                   ),
-                  
                   tabs: const [
                     Tab(
                       text: "New Connections",
@@ -40,7 +40,37 @@ class Test extends StatelessWidget {
                     Tab(
                       text: "My Connections",
                     ),
-                    
+                  ],
+                ),
+              ),
+              Text("data"),
+              Container(
+                width: Get.width,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(AppDm().radiusxx),
+                    topRight: Radius.circular(AppDm().radiusxx),
+                  ),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.25),
+                      offset: Offset(0, 0),
+                      blurRadius: 5,
+                      spreadRadius: 0,
+                    )
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(Icons.home),
+                    Icon(Icons.calendar_month),
+                    Icon(Icons.location_off),
+                    Icon(Icons.pin),
+                    Icon(Icons.abc),
                   ],
                 ),
               ),
