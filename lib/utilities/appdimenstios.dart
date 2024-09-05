@@ -19,6 +19,7 @@ class AppDm {
   double fontsizesm = 12;
   double fontsizemd = 14;
   double fontsizelr = 16;
+  double fontsizex = 22;
   double heightsm = 0;
   double heightmd = 0;
   double heightlr = 0;

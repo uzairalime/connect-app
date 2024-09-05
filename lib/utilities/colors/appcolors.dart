@@ -11,7 +11,6 @@ class Appcolors {
   Gradient bggradient = const LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.topRight,
-    
     colors: [
       Color.fromRGBO(45, 38, 75, 1),
       Color.fromRGBO(255, 255, 255, 1),
@@ -22,6 +21,7 @@ class Appcolors {
   Color black = const Color.fromRGBO(80, 80, 80, 1);
   Color grey = const Color.fromRGBO(168, 168, 168, 1);
   Color lightgrey = const Color.fromRGBO(242, 242, 242, 1);
+  Color primaryColor = const Color.fromRGBO(81, 81, 198, 1);
   
 }
 

@@ -1,9 +1,11 @@
 //================================ Dimenstons ==============================
 import 'package:connectapp/utilities/appdimenstios.dart';
+import 'package:connectapp/utilities/widgets/card_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:connectapp/utilities/widgets/custom_btn.dart';
 import 'package:connectapp/utilities/widgets/customtileblack.dart';
+import 'package:get/get.dart';
 
 class EventCard extends StatelessWidget {
   final img;
@@ -47,8 +49,9 @@ class EventCard extends StatelessWidget {
               title: location,
               icon: "assets/icons/location_bl_icon.svg"),
           CustomTileblack(
-              title: date, icon: "assets/icons/calender_icon.svg"),
-          CustomBtn(name: "Join", onTap: onTap),
+            title: date, icon: "assets/icons/calender_icon.svg"),
+          SizedBox(height: Get.height*0.01,),
+          CardBtn(name: "Join", onTap: onTap)
         ],
       ),
     );

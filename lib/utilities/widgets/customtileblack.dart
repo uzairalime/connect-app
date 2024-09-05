@@ -10,8 +10,8 @@ class CustomTileblack extends StatelessWidget {
   final title;
    CustomTileblack({
     Key? key,
-     this.icon,
-     this.title,
+    required this.icon,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -22,7 +22,7 @@ class CustomTileblack extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           title,
-          style: blackTextmd,
+          style: blackTextmd.copyWith(fontWeight: FontWeight.w400),
         ),
       ],
     );

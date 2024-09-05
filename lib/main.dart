@@ -1,6 +1,10 @@
 import 'package:connectapp/view/connections_screen.dart';
+import 'package:connectapp/view/createevent_screen.dart';
 import 'package:connectapp/view/event_screen.dart';
+import 'package:connectapp/view/groupchat_screen.dart';
 import 'package:connectapp/view/home_screen.dart';
+import 'package:connectapp/view/information_screen.dart';
+import 'package:connectapp/view/test.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,12 +22,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          scrolledUnderElevation: 0,
+        ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
       // home: HomeScreen(),
-      // home: ConnectionsScreen(),
-      home: EventScreen(),
+      home: ConnectionsScreen(),
+      // home: GroupchatScreen(),
+      // home: CreateEventScreen(),
+      // home: Test(),
     );
   }
 }

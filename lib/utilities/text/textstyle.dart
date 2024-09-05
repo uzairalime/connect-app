@@ -1,7 +1,12 @@
 import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:flutter/material.dart';
-
+// xLarge Black Text
+TextStyle blackTextx = TextStyle(
+  color: Appcolors().black,
+  fontSize: AppDm().fontsizex, //lr
+  fontWeight: FontWeight.w500,
+);
 // Large Black Text
 TextStyle blackTextlr = TextStyle(
   color: Appcolors().black,
@@ -11,14 +16,14 @@ TextStyle blackTextlr = TextStyle(
 // Medium Black Text
 TextStyle blackTextmd = TextStyle(
   color: Appcolors().black,
-  fontSize: AppDm().fontsizelr, // lr pahla 15
+  fontSize: AppDm().fontsizemd, // lr pahla 15
   fontWeight: FontWeight.w500,
 );
 // Small Black Text
 TextStyle blackTextsm = TextStyle( //sm
   color: Appcolors().black,
   fontSize: AppDm().fontsizesm,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w400,
 );
 // Large White Text
 TextStyle whiteTextlr = TextStyle(
