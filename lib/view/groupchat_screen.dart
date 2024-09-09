@@ -1,4 +1,7 @@
 import 'dart:developer';
+import 'dart:io';
+import 'package:connectapp/controller/file_controller.dart';
+import 'package:connectapp/controller/img_controller.dart';
 import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
@@ -8,6 +11,7 @@ import 'package:connectapp/utilities/widgets/msgprofile.dart';
 import 'package:connectapp/utilities/widgets/receviermsg.dart';
 import 'package:connectapp/utilities/widgets/searchfield.dart';
 import 'package:connectapp/utilities/widgets/usermsg.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +21,8 @@ class GroupchatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
+    ImgController imgController = Get.put(ImgController());
+    FileController fileController = Get.put(FileController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -63,7 +69,38 @@ class GroupchatScreen extends StatelessWidget {
                 );
               },
             ),
-          )
+          ),
+          Row(
+            children: [
+              Container(
+                width: 100,
+                height: 100,
+                child: Obx((){
+                  return imgController.imgPath.value == '' ? Container() : Image.file(File(imgController.imgPath.value));
+                }),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                child: Obx((){
+                  return imgController.imgPath.value == '' ? Container() : Image.file(File(imgController.imgPath.value));
+                }),
+              ),
+
+               
+            ],
+            
+          ),
+          Container(
+                // width: 100,
+                height: 200,
+                color: Colors.amber,
+                child: Obx((){
+                  return fileController.filePath.value == '' ? Container(
+                    color: Colors.red,
+                  ) : Image.file(File(fileController.filePath.value));
+                }),
+              ),
         ],
       ),
       // buttom bar
@@ -142,52 +179,59 @@ class GroupchatScreen extends StatelessWidget {
 }
 
 showcontainer() {
-  return Container(
-    // width: Get.width * 0.7,
-    // margin: EdgeInsets.all(30),
-    
-    // color: Appcolors().white,
-    
-    child: Column(
-      
-      mainAxisSize: MainAxisSize.min,
-      // crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconCard(
-                icon: Icons.camera_alt_rounded,
-                title: "Camera",
-                onTap: () => log("Camera")),
-            IconCard(
-                icon: Icons.camera_alt_rounded,
-                title: "Record",
-                onTap: () => log("Record")),
-            IconCard(
-                icon: Icons.camera_alt_rounded,
-                title: "Contact",
-                onTap: () => log("Contact")),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconCard(
-                icon: Icons.camera_alt_rounded,
-                title: "Gallery",
-                onTap: () => log("Gallery")),
-            IconCard(
-                icon: Icons.camera_alt_rounded,
-                title: "Location",
-                onTap: () => log("Location")),
-            IconCard(
-                icon: Icons.camera_alt_rounded,
-                title: "Document",
-                onTap: () => log("Document")),
-          ],
-        ),
-      ],
-    ),
+  ImgController imgController = Get.put(ImgController());
+  FileController fileController = Get.put(FileController());
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    // crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconCard(
+              icon: Icons.camera_alt_rounded,
+              title: "Camera",
+              onTap: () {
+                imgController.getImage();
+                log( imgController.imgPath.value);
+                Get.back();
+                log("Camera");
+              }),
+          IconCard(
+              icon: Icons.camera_alt_rounded,
+              title: "Record",
+              onTap: () {
+                imgController.getCamera();
+                Get.back();
+                log("Record");
+              }),
+          IconCard(
+              icon: Icons.camera_alt_rounded,
+              title: "Contact",
+              onTap: () => log("Contact")),
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconCard(
+              icon: Icons.camera_alt_rounded,
+              title: "Gallery",
+              onTap: () => log("Gallery")),
+          IconCard(
+              icon: Icons.camera_alt_rounded,
+              title: "Location",
+              onTap: () => log("Location")),
+          IconCard(
+              icon: Icons.camera_alt_rounded,
+              title: "Document",
+              onTap: () {
+                // filecon
+                fileController.getFile();
+                Get.back();
+              }),
+        ],
+      ),
+    ],
   );
 }

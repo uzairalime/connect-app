@@ -19,12 +19,4 @@ class AppPages {
     GetPage(name: '/navbar', page: () => const Navbar()),
     GetPage(name: '/test', page: () => const Test()),
   ];
-
-  //================================  ==============================
-
-  // static String navBar = '/navBar';
-  // static String home = '/navBar';
-  // static String navBar = '/navBar';
-  // static String navBar = '/navBar';
-  // static String navBar = '/navBar';
 }

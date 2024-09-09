@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class Appcolors {
-  Gradient primary = const LinearGradient(
+   Gradient primary = const LinearGradient(
     colors: [
       Color.fromRGBO(136, 139, 244, 1),
       Color.fromRGBO(81, 81, 198, 1),

@@ -23,9 +23,9 @@ class Navbar extends StatelessWidget {
           children: const [
             HomeScreen(),
             ConnectionsScreen(),
-            EventScreen(),
             GroupchatScreen(),
             InformationScreen(),
+            EventScreen(),
           ],
         ),
       ),
@@ -56,7 +56,7 @@ class Navbar extends StatelessWidget {
                   onTap: () => controller.currentIndex.value = 0,
                   child: SvgPicture.asset(
                     'assets/icons/home_icon.svg',
-                    color: controller.currentIndex == 0
+                    color: controller.currentIndex.value == 0
                         ? Appcolors().primaryColor
                         : Appcolors().grey,
                   )),
@@ -66,17 +66,18 @@ class Navbar extends StatelessWidget {
                   onTap: () => controller.currentIndex.value = 1,
                   child: SvgPicture.asset(
                     'assets/icons/user_icon.svg',
-                    color: controller.currentIndex == 1
+                    color: controller.currentIndex.value == 1
                         ? Appcolors().primaryColor
                         : Appcolors().grey,
                   )),
             ),
+            // 3rd icon
             Obx(
               () => InkWell(
-                  onTap: () => controller.currentIndex.value = 2,
+                  onTap: () => Get.to(const GroupchatScreen()),
                   child: SvgPicture.asset(
                     'assets/icons/chat_icon.svg',
-                    color: controller.currentIndex == 2
+                    color: controller.currentIndex.value == 2
                         ? Appcolors().primaryColor
                         : Appcolors().grey,
                   )),
@@ -86,7 +87,7 @@ class Navbar extends StatelessWidget {
                   onTap: () => controller.currentIndex.value = 3,
                   child: SvgPicture.asset(
                     'assets/icons/setting_icon.svg',
-                    color: controller.currentIndex == 3
+                    color: controller.currentIndex.value == 3
                         ? Appcolors().primaryColor
                         : Appcolors().grey,
                   )),
@@ -96,7 +97,7 @@ class Navbar extends StatelessWidget {
                   onTap: () => controller.currentIndex.value = 4,
                   child: SvgPicture.asset(
                     'assets/icons/option_icon.svg',
-                    color: controller.currentIndex == 4
+                    color: controller.currentIndex.value == 4
                         ? Appcolors().primaryColor
                         : Appcolors().grey,
                   )),
