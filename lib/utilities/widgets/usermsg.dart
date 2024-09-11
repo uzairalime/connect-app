@@ -131,3 +131,43 @@ class ContactMsg extends StatelessWidget {
 }
 
 // file message widget
+class FileMsgUser extends StatelessWidget {
+  final name;
+  const FileMsgUser({super.key,required this.name});
+
+  @override
+  Widget build(BuildContext context) {
+    
+    return Wrap(
+      alignment: WrapAlignment.end,
+      verticalDirection: VerticalDirection.down,
+      children: [
+        Container(
+          margin: EdgeInsets.only(
+              bottom: AppDm().paddinglr, right: AppDm().marginlr),
+          padding: EdgeInsets.all(AppDm().paddingx),
+          decoration: BoxDecoration(
+              // color: Appcolors().primaryColor,
+              border: Border.all(color: Appcolors().primaryColor),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(AppDm().radiusx),
+                bottomLeft: Radius.circular(AppDm().radiusx),
+                topRight: Radius.circular(AppDm().radiusx),
+              )),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              // msg text
+              Text(
+                name,
+                style: blackTextlr.copyWith(fontWeight: FontWeight.w400),
+              ),
+              // time and icon
+              
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}

@@ -15,8 +15,8 @@ class IconCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 105,
-        height: 110,
+        width: Get.width*0.23,
+        height: Get.height*0.15,
         padding: EdgeInsets.all(AppDm().paddingx),
         child: Column(
           children: [

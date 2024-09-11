@@ -53,7 +53,12 @@ class GroupchatScreen extends StatelessWidget {
                         return UserImgMsg(
                           imgPath: msgItem,
                         );
-                      } else {
+                      }else if (msgItem.endsWith('.pdf', )) {
+                        return FileMsgUser(
+                          name: msgItem.toString(),
+                        );
+                      }
+                       else {
                         return UserMsg(
                           msg: msgItem,
                           time: time,
@@ -68,6 +73,7 @@ class GroupchatScreen extends StatelessWidget {
                   },
                 )),
           ),
+          
 
           // Row(
           //   children: [
@@ -180,12 +186,6 @@ class GroupchatScreen extends StatelessWidget {
                         );
                       },
                     );
-                    // showModalBottomSheet(
-                    //   barrierColor: Colors.transparent,
-
-                    //   context: context, builder: (context) {
-                    //   return showcontainer();
-                    // },);
                     log("Plus btn");
                   },
                   child: Icon(
@@ -206,12 +206,9 @@ class GroupchatScreen extends StatelessWidget {
                 },
               ),
             ),
-            // SearchfieldCustom(
-            //   hintText: "Type a message",
-            // ),
             // msg send btn
             SizedBox(
-              width: Get.width * 0.10,
+              // width: Get.width * 0.10,
               child: CircleIconBtn(
                 icon: Icons.mic,
                 onTap: () => log("mic icon btn"),
@@ -236,8 +233,7 @@ showcontainer() {
               icon: Icons.camera_alt_rounded,
               title: "Camera",
               onTap: () {
-                msgController.getImage();
-                log(msgController.imgPath.value);
+                msgController.getCamera();
                 Get.back();
                 log("Camera");
               }),
@@ -248,27 +244,41 @@ showcontainer() {
                 msgController.getCamera();
                 Get.back();
                 log("Record");
-              }),
+              }
+          ),
+          // Contact
           IconCard(
               icon: Icons.camera_alt_rounded,
               title: "Contact",
               onTap: () {
                 msgController.getContact();
                 Get.back();
-              }),
+              }
+          ),
         ],
       ),
+      // Gallery Location Document
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Gallery
           IconCard(
               icon: Icons.camera_alt_rounded,
               title: "Gallery",
-              onTap: () => log("Gallery")),
+              onTap: () {
+                msgController.getImage();
+                log(msgController.imgPath.value);
+                Get.back();
+                log("Gallery");
+              }
+          ),
+          // Location
           IconCard(
               icon: Icons.camera_alt_rounded,
               title: "Location",
-              onTap: () => log("Location")),
+              onTap: () => log("Location")
+          ),
+          // Document
           IconCard(
               icon: Icons.camera_alt_rounded,
               title: "Document",
@@ -276,7 +286,8 @@ showcontainer() {
                 // filecon
                 msgController.getFile();
                 Get.back();
-              }),
+              }
+          ),
         ],
       ),
     ],
