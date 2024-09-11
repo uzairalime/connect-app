@@ -4,6 +4,7 @@ import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class ReceiverMsg extends StatelessWidget {
   final String msg;
   final time;
@@ -35,7 +36,7 @@ class ReceiverMsg extends StatelessWidget {
         children: [
           // msg text
           Text(
-            "Awesome, thanks for letting me know! Can't wait for my delivery. 🎉",
+            msg,
             style: blackTextlr.copyWith(fontWeight: FontWeight.w400),
           ),
           // time and icon

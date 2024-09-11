@@ -7,7 +7,8 @@ import 'package:get/get.dart';
 class SearchField extends StatelessWidget {
   final hintText;
   final msgController;
-  const SearchField({super.key, this.hintText, this.msgController});
+  final onSubmit;
+  const SearchField({super.key, this.hintText, this.msgController, this.onSubmit});
 
 
   @override
@@ -22,6 +23,7 @@ class SearchField extends StatelessWidget {
       ),
       child: TextFormField(
         controller: msgController,
+        onFieldSubmitted: onSubmit,
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: greyTextmd,

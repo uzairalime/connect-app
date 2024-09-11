@@ -1,17 +1,13 @@
 import 'dart:developer';
-import 'dart:io';
-import 'package:connectapp/controller/file_controller.dart';
-import 'package:connectapp/controller/img_controller.dart';
+import 'package:connectapp/controller/msg_controller.dart';
 import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:connectapp/utilities/widgets/circleicon_btn.dart';
 import 'package:connectapp/utilities/widgets/icon_card.dart';
 import 'package:connectapp/utilities/widgets/msgprofile.dart';
-import 'package:connectapp/utilities/widgets/receviermsg.dart';
 import 'package:connectapp/utilities/widgets/searchfield.dart';
 import 'package:connectapp/utilities/widgets/usermsg.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,8 +17,11 @@ class GroupchatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
-    ImgController imgController = Get.put(ImgController());
-    FileController fileController = Get.put(FileController());
+    MsgController msgController = Get.put(MsgController());
+    // time
+    DateTime now = DateTime.now();
+    String time =
+        "${now.hour}:${now.minute > 9 ? now.minute : '0${now.minute}'},";
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -45,62 +44,105 @@ class GroupchatScreen extends StatelessWidget {
             height: 10,
           ),
           Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    UserMsg(
-                      msg:
-                          "Awesome, thanks for letting me know! Can't wait for my delivery. 🎉",
-                      time: '10:10',
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                    ReceiverMsg(
-                      msg:
-                          "No problem at all! I'll be there in about 15 minutes.",
-                      time: "10:11",
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                  ],
-                );
-              },
-            ),
+            child: Obx(() => ListView.builder(
+                  itemCount: msgController.msgList.length,
+                  itemBuilder: (context, index) {
+                    var msgItem = msgController.msgList[index];
+                    if (msgItem is String) {
+                      if (msgItem.endsWith('.png')) {
+                        return UserImgMsg(
+                          imgPath: msgItem,
+                        );
+                      } else {
+                        return UserMsg(
+                          msg: msgItem,
+                          time: time,
+                        );
+                      }
+                    } else if (msgItem is Map) {
+                      return ContactMsg(
+                          name: msgItem['name'], number: msgItem['number']);
+                    } else {
+                      return Container();
+                    }
+                  },
+                )),
           ),
-          Row(
-            children: [
-              Container(
-                width: 100,
-                height: 100,
-                child: Obx((){
-                  return imgController.imgPath.value == '' ? Container() : Image.file(File(imgController.imgPath.value));
-                }),
-              ),
-              Container(
-                width: 100,
-                height: 100,
-                child: Obx((){
-                  return imgController.imgPath.value == '' ? Container() : Image.file(File(imgController.imgPath.value));
-                }),
-              ),
 
-               
-            ],
-            
-          ),
-          Container(
-                // width: 100,
-                height: 200,
-                color: Colors.amber,
-                child: Obx((){
-                  return fileController.filePath.value == '' ? Container(
-                    color: Colors.red,
-                  ) : Image.file(File(fileController.filePath.value));
-                }),
-              ),
+          // Row(
+          //   children: [
+          //     Container(
+          //       width: 100,
+          //       height: 100,
+          //       child: Obx(() {
+          //         return msgController.imgPath.value == ''
+          //             ? Container()
+          //             : Image.file(File(msgController.imgPath.value));
+          //       }),
+          //     ),
+          //     Container(
+          //       width: 100,
+          //       height: 100,
+          //       child: Obx(() {
+          //         return msgController.imgPath.value == ''
+          //             ? Container()
+          //             : Image.file(File(msgController.imgPath.value));
+          //       }),
+          //     ),
+          //   ],
+          // ),
+          // Container(
+          //   // width: 100,
+          //   height: 200,
+          //   color: Colors.amber,
+          //   child: Obx(() {
+          //     return msgController.filePath.value == ''
+          //         ? Container(
+          //             color: Colors.red,
+          //           )
+          //         : Image.file(File(msgController.filePath.value));
+          //   }),
+          // ),
+          // Container(
+          //   // width: 100,
+          //   width: Get.width * 0.9,
+          //   height: 100,
+          //   decoration: BoxDecoration(
+          //       color: Colors.amber,
+          //       borderRadius: BorderRadius.circular(AppDm().radiusmd)),
+          //   padding: EdgeInsets.all(AppDm().paddingxx),
+          //   margin: EdgeInsets.all(AppDm().marginmd),
+          //   child: Row(
+          //     children: [
+          //       Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           Text(
+          //             "Name",
+          //             style: blackTextlr,
+          //           ),
+          //           Text("Phone number", style: blackTextlr)
+          //         ],
+          //       ),
+          //       const SizedBox(
+          //         width: 20,
+          //       ),
+          //       Obx(
+          //         () => Column(
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           children: [
+          //             Text(msgController.contactName.toString(),
+          //                 style: blackTextlr),
+          //             Text(msgController.contactNumber.toString(),
+          //                 style: blackTextlr)
+          //           ],
+          //         ),
+          //       )
+          //     ],
+          //   ),
+          // ),
         ],
       ),
       // buttom bar
@@ -140,7 +182,7 @@ class GroupchatScreen extends StatelessWidget {
                     );
                     // showModalBottomSheet(
                     //   barrierColor: Colors.transparent,
-                      
+
                     //   context: context, builder: (context) {
                     //   return showcontainer();
                     // },);
@@ -158,6 +200,10 @@ class GroupchatScreen extends StatelessWidget {
               child: SearchField(
                 hintText: "Type a message...",
                 msgController: controller,
+                onSubmit: (value) {
+                  msgController.addMessage(value);
+                  controller.clear();
+                },
               ),
             ),
             // SearchfieldCustom(
@@ -179,11 +225,9 @@ class GroupchatScreen extends StatelessWidget {
 }
 
 showcontainer() {
-  ImgController imgController = Get.put(ImgController());
-  FileController fileController = Get.put(FileController());
+  MsgController msgController = Get.put(MsgController());
   return Column(
     mainAxisSize: MainAxisSize.min,
-    // crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -192,8 +236,8 @@ showcontainer() {
               icon: Icons.camera_alt_rounded,
               title: "Camera",
               onTap: () {
-                imgController.getImage();
-                log( imgController.imgPath.value);
+                msgController.getImage();
+                log(msgController.imgPath.value);
                 Get.back();
                 log("Camera");
               }),
@@ -201,14 +245,17 @@ showcontainer() {
               icon: Icons.camera_alt_rounded,
               title: "Record",
               onTap: () {
-                imgController.getCamera();
+                msgController.getCamera();
                 Get.back();
                 log("Record");
               }),
           IconCard(
               icon: Icons.camera_alt_rounded,
               title: "Contact",
-              onTap: () => log("Contact")),
+              onTap: () {
+                msgController.getContact();
+                Get.back();
+              }),
         ],
       ),
       Row(
@@ -227,7 +274,7 @@ showcontainer() {
               title: "Document",
               onTap: () {
                 // filecon
-                fileController.getFile();
+                msgController.getFile();
                 Get.back();
               }),
         ],

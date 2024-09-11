@@ -1,5 +1,4 @@
 import 'package:connectapp/routes/routes.dart';
-import 'package:connectapp/view/groupchat_screen.dart';
 import 'package:connectapp/view/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,8 +28,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: HomeScreen(),
-      // home: const Navbar(),
-      home: GroupchatScreen(),
+      home: const Navbar(),
+      // home: GroupchatScreen(),
       // home: CreateEventScreen(),
       // home: Test(),
       

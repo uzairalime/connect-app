@@ -4,6 +4,7 @@ import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class TxtField extends StatelessWidget {
   final String hintText;
   final String labelText;

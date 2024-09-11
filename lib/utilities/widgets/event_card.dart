@@ -3,7 +3,6 @@ import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/widgets/card_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
-import 'package:connectapp/utilities/widgets/custom_btn.dart';
 import 'package:connectapp/utilities/widgets/customtileblack.dart';
 import 'package:get/get.dart';
 
