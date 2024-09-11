@@ -5,6 +5,7 @@ import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:video_player/video_player.dart';
 
 // text message widget
 // ignore: must_be_immutable
@@ -133,11 +134,10 @@ class ContactMsg extends StatelessWidget {
 // file message widget
 class FileMsgUser extends StatelessWidget {
   final name;
-  const FileMsgUser({super.key,required this.name});
+  const FileMsgUser({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
-    
     return Wrap(
       alignment: WrapAlignment.end,
       verticalDirection: VerticalDirection.down,
@@ -154,20 +154,37 @@ class FileMsgUser extends StatelessWidget {
                 bottomLeft: Radius.circular(AppDm().radiusx),
                 topRight: Radius.circular(AppDm().radiusx),
               )),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+          child: Wrap(
             children: [
+              Icon(Icons.document_scanner_outlined),
               // msg text
               Text(
                 name,
                 style: blackTextlr.copyWith(fontWeight: FontWeight.w400),
               ),
-              // time and icon
-              
             ],
           ),
         ),
       ],
     );
+  }
+}
+
+// video message widget
+class VideoMsgUser extends StatelessWidget {
+  final videoPath;
+  const VideoMsgUser({super.key, required this.videoPath});
+
+  @override
+  Widget build(BuildContext context) {
+    VideoPlayerController _controller =
+        VideoPlayerController.file(File(videoPath));
+    return VideoPlayer(_controller
+          ..initialize().then((_) {
+            _controller.play();
+            _controller.setLooping(true);
+          })
+        // VideoPlayerController.file(File(videoPath)),
+        );
   }
 }

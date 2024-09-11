@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 
 class MsgController extends GetxController{
   RxString imgPath = ''.obs; // Image controller
+  RxString videoPath = ''.obs; // Video controller
   RxString filePath = ''.obs; // Get file
   final FlutterContactPicker _flutterContactPicker = FlutterContactPicker(); // get contact
   Rx<Contact?> selectedContact = Rx<Contact?>(null); // get contact
@@ -19,7 +20,6 @@ class MsgController extends GetxController{
     msgList.add(msg);
     log(msg);
   }
-
   // get image controller
   Future getImage() async {
     final ImagePicker _picker = ImagePicker();
@@ -78,5 +78,19 @@ class MsgController extends GetxController{
       log("Failed to pick contact: $e");
     }
   }
+  // get video record 
+  Future getRecord() async {
+    final ImagePicker _picker = ImagePicker();
+    final video = await _picker.pickVideo(source: ImageSource.gallery);
+    if (video != null) {
+      videoPath.value = video.path.toString();
+      
+      msgList.add(videoPath.value);
+      log(videoPath.value);
+    } else {
+      print('No image selected.');
+    }
+  }
+  
   
 }

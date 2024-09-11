@@ -53,9 +53,19 @@ class GroupchatScreen extends StatelessWidget {
                         return UserImgMsg(
                           imgPath: msgItem,
                         );
+                      }else if (msgItem.endsWith('.jpg', )) {
+                       return UserImgMsg(
+                          imgPath: msgItem,
+                        );
                       }else if (msgItem.endsWith('.pdf', )) {
                         return FileMsgUser(
-                          name: msgItem.toString(),
+                          name: msgItem.split('/').last,
+
+                        );
+                      }
+                      else if (msgItem.endsWith('.mp4', )) {
+                        return VideoMsgUser(
+                          videoPath: msgItem,
                         );
                       }
                        else {
@@ -73,82 +83,6 @@ class GroupchatScreen extends StatelessWidget {
                   },
                 )),
           ),
-          
-
-          // Row(
-          //   children: [
-          //     Container(
-          //       width: 100,
-          //       height: 100,
-          //       child: Obx(() {
-          //         return msgController.imgPath.value == ''
-          //             ? Container()
-          //             : Image.file(File(msgController.imgPath.value));
-          //       }),
-          //     ),
-          //     Container(
-          //       width: 100,
-          //       height: 100,
-          //       child: Obx(() {
-          //         return msgController.imgPath.value == ''
-          //             ? Container()
-          //             : Image.file(File(msgController.imgPath.value));
-          //       }),
-          //     ),
-          //   ],
-          // ),
-          // Container(
-          //   // width: 100,
-          //   height: 200,
-          //   color: Colors.amber,
-          //   child: Obx(() {
-          //     return msgController.filePath.value == ''
-          //         ? Container(
-          //             color: Colors.red,
-          //           )
-          //         : Image.file(File(msgController.filePath.value));
-          //   }),
-          // ),
-          // Container(
-          //   // width: 100,
-          //   width: Get.width * 0.9,
-          //   height: 100,
-          //   decoration: BoxDecoration(
-          //       color: Colors.amber,
-          //       borderRadius: BorderRadius.circular(AppDm().radiusmd)),
-          //   padding: EdgeInsets.all(AppDm().paddingxx),
-          //   margin: EdgeInsets.all(AppDm().marginmd),
-          //   child: Row(
-          //     children: [
-          //       Column(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: [
-          //           Text(
-          //             "Name",
-          //             style: blackTextlr,
-          //           ),
-          //           Text("Phone number", style: blackTextlr)
-          //         ],
-          //       ),
-          //       const SizedBox(
-          //         width: 20,
-          //       ),
-          //       Obx(
-          //         () => Column(
-          //           crossAxisAlignment: CrossAxisAlignment.start,
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           children: [
-          //             Text(msgController.contactName.toString(),
-          //                 style: blackTextlr),
-          //             Text(msgController.contactNumber.toString(),
-          //                 style: blackTextlr)
-          //           ],
-          //         ),
-          //       )
-          //     ],
-          //   ),
-          // ),
         ],
       ),
       // buttom bar
@@ -229,6 +163,7 @@ showcontainer() {
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Camera
           IconCard(
               icon: Icons.camera_alt_rounded,
               title: "Camera",
@@ -236,12 +171,14 @@ showcontainer() {
                 msgController.getCamera();
                 Get.back();
                 log("Camera");
-              }),
+              }
+          ),
+          // record
           IconCard(
               icon: Icons.camera_alt_rounded,
               title: "Record",
               onTap: () {
-                msgController.getCamera();
+                msgController.getRecord();
                 Get.back();
                 log("Record");
               }
