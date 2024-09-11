@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:connectapp/utilities/appdimenstios.dart';
 import 'package:connectapp/utilities/colors/appcolors.dart';
 import 'package:connectapp/utilities/text/textstyle.dart';
@@ -171,20 +170,36 @@ class FileMsgUser extends StatelessWidget {
 }
 
 // video message widget
-class VideoMsgUser extends StatelessWidget {
+class VideoMsgUser extends StatefulWidget {
   final videoPath;
   const VideoMsgUser({super.key, required this.videoPath});
 
   @override
+  State<VideoMsgUser> createState() => _VideoMsgUserState();
+}
+
+class _VideoMsgUserState extends State<VideoMsgUser> {
+  late VideoPlayerController _controller;
+  @override
+  void initState() {
+    // _controller = VideoPlayerController.asset('assets/images/vid.mp4');
+    _controller = VideoPlayerController.file(File(widget.videoPath));
+    _controller.initialize().then((_) {
+      _controller.play();
+      _controller.setLooping(true);
+      setState(() {
+        
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    VideoPlayerController _controller =
-        VideoPlayerController.file(File(videoPath));
-    return VideoPlayer(_controller
-          ..initialize().then((_) {
-            _controller.play();
-            _controller.setLooping(true);
-          })
-        // VideoPlayerController.file(File(videoPath)),
-        );
+    return Container(
+      margin: EdgeInsets.all(AppDm().marginlr),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppDm().radiusxx),
+        child: AspectRatio(aspectRatio: _controller.value.aspectRatio, child: VideoPlayer(_controller))),
+    );
   }
 }

@@ -81,7 +81,7 @@ class MsgController extends GetxController{
   // get video record 
   Future getRecord() async {
     final ImagePicker _picker = ImagePicker();
-    final video = await _picker.pickVideo(source: ImageSource.gallery);
+    final video = await _picker.pickVideo(source: ImageSource.camera);
     if (video != null) {
       videoPath.value = video.path.toString();
       
