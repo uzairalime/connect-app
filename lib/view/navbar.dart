@@ -74,7 +74,7 @@ class Navbar extends StatelessWidget {
             // 3rd icon
             Obx(
               () => InkWell(
-                  onTap: () => Get.to(const GroupchatScreen()),
+                  onTap: () => Get.to(()=>const GroupchatScreen()),
                   child: SvgPicture.asset(
                     'assets/icons/chat_icon.svg',
                     color: controller.currentIndex.value == 2

@@ -15,9 +15,10 @@ class IconCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: Get.width*0.23,
-        height: Get.height*0.15,
-        padding: EdgeInsets.all(AppDm().paddingx),
+        width: Get.width*0.21,
+        height: Get.height*0.10,
+
+        // padding: EdgeInsets.all(AppDm().paddingsm),
         child: Column(
           children: [
             CircleIconBtn(
@@ -25,7 +26,7 @@ class IconCard extends StatelessWidget {
               onTap: onTap,
             ),
             SizedBox(
-              height: Get.height * 0.015,
+              height: Get.height * 0.013,
             ),
             Text(
               title,

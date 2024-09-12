@@ -83,10 +83,7 @@ class GroupchatScreen extends StatelessWidget {
                   },
                 )),
           ),
-        ],
-      ),
-      // buttom bar
-      bottomNavigationBar: Container(
+           Container(
         height: 100,
         padding: EdgeInsets.all(AppDm().paddingxx),
         decoration: BoxDecoration(
@@ -107,26 +104,25 @@ class GroupchatScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             // Plus btn
-            SizedBox(
-              width: Get.width * 0.10,
-              child: InkWell(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog.adaptive(
-                          content: showcontainer(),
-                          alignment: Alignment.bottomCenter,
-                        );
-                      },
-                    );
-                    log("Plus btn");
-                  },
-                  child: Icon(
-                    Icons.add,
-                    color: Appcolors().primaryColor,
-                  )),
-            ),
+            InkWell(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog.adaptive(
+                        content: showcontainer(),
+                        alignment: Alignment.bottomCenter,
+                      );
+                    },
+                  );
+                  log("Plus btn");
+                },
+                child: Icon(
+                  Icons.add,
+                  size: Get.width * 0.06,
+                  color: Appcolors().primaryColor,
+                )),
+            
             // text field
             SizedBox(
               width: Get.width * 0.65,
@@ -140,6 +136,7 @@ class GroupchatScreen extends StatelessWidget {
                 },
               ),
             ),
+            
             // msg send btn
             SizedBox(
               // width: Get.width * 0.10,
@@ -151,6 +148,75 @@ class GroupchatScreen extends StatelessWidget {
           ],
         ),
       ),
+        ],
+      ),
+      // resizeToAvoidBottomInset: true,
+      // buttom bar
+      // bottomNavigationBar: Container(
+      //   height: 100,
+      //   padding: EdgeInsets.all(AppDm().paddingxx),
+      //   decoration: BoxDecoration(
+      //       color: Appcolors().white,
+      //       boxShadow: const [
+      //         BoxShadow(
+      //           color: Color.fromRGBO(0, 0, 0, 0.25),
+      //           offset: Offset(0, 0),
+      //           blurRadius: 5,
+      //           spreadRadius: 0,
+      //         )
+      //       ],
+      //       borderRadius: BorderRadius.only(
+      //           topLeft: Radius.circular(AppDm().radiusxx),
+      //           topRight: Radius.circular(AppDm().radiusxx))),
+      //   child: Row(
+      //     crossAxisAlignment: CrossAxisAlignment.center,
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: [
+      //       // Plus btn
+      //       SizedBox(
+      //         width: Get.width * 0.10,
+      //         child: InkWell(
+      //             onTap: () {
+      //               showDialog(
+      //                 context: context,
+      //                 builder: (context) {
+      //                   return AlertDialog.adaptive(
+      //                     content: showcontainer(),
+      //                     alignment: Alignment.bottomCenter,
+      //                   );
+      //                 },
+      //               );
+      //               log("Plus btn");
+      //             },
+      //             child: Icon(
+      //               Icons.add,
+      //               color: Appcolors().primaryColor,
+      //             )),
+      //       ),
+      //       // text field
+      //       SizedBox(
+      //         width: Get.width * 0.65,
+      //         height: Get.height * 0.12,
+      //         child: SearchField(
+      //           hintText: "Type a message...",
+      //           msgController: controller,
+      //           onSubmit: (value) {
+      //             msgController.addMessage(value);
+      //             controller.clear();
+      //           },
+      //         ),
+      //       ),
+      //       // msg send btn
+      //       SizedBox(
+      //         // width: Get.width * 0.10,
+      //         child: CircleIconBtn(
+      //           icon: Icons.mic,
+      //           onTap: () => log("mic icon btn"),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

@@ -127,7 +127,7 @@ class InformationScreen extends StatelessWidget {
       ),
       // buttom bar
       bottomNavigationBar: Container(
-        height: 100,
+        height: 95,
         padding: EdgeInsets.all(AppDm().paddingxx),
         decoration: BoxDecoration(
             color: Appcolors().white,
